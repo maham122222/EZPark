@@ -1,11 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import MapView from "react-native-maps";
+import Otp from "./components/Otp";
+import Test from "./components/Test";
+import Map from "./components/Map";
+import { useState } from "react";
+import MapViewDirections from 'react-native-maps-directions';
 
 export default function App() {
+  const [state, setState] = useState({
+    //pick up location
+    pickupCords: {
+      latitude: 30.7046,
+      longitude: 76.7179,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }, //drop location
+    droplocationCords: {
+      latitude: 30.7333,
+      longitude: 76.7794,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    },
+  });
+
+  const { pickupCords, droplocationCords } = state;
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <MapView
+        style={StyleSheet.absoluteFill}
+        initialRegion={pickupCords}
+          
+          
+        
+      >
+        <MapViewDirections
+          origin={pickupCords}
+          destination={droplocationCords}
+          apikey={GOOGLE_MAPS_APIKEY}
+        />
+      </MapView>
     </View>
   );
 }
@@ -13,8 +48,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
