@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useRef, useState } from "react";
 
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "#38598b",
-    height: "100%",
+    height: "200%",
     alignItems: "center",
   },
   mainText: {
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#007cb9",
     borderRadius: 20,
     alignSelf: "center",
-    marginTop: 50,
+    marginTop: 170,
     justifyContent: "center",
     alignItems: "center",
   },
